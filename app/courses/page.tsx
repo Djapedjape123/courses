@@ -1,7 +1,16 @@
  
 import Link from "next/link";
+import CoursesCatalogClinet from "./courses-catalog-clinet";
+import { getAllCourses, getCourseCategories } from "@/lib/data";
 
 export default function Course() {
+
+    const courses = getAllCourses();
+
+    const category = getCourseCategories();
+
+
+
   return (
     <section className="pad-section">
       <div className="container">
@@ -12,36 +21,9 @@ export default function Course() {
                 <p className="text-muted max-prose">Brows all my courses for web development</p>
             </div>
 
-            <div className="stack-md">
-              <div className="grid-cards">
-                <Link href="#" className="card-link">
-
-                  <div className="badge-row">
-                    <span className="badge">Web developer</span>
-                    <span className="badge ">Beginer</span>
-                  </div>
-
-                    <h3 className="card-link-title">Next.js and Tailwind CSS</h3>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam, illo!</p>
-
-                    <dl className="card-meta">
-                        <div>
-                            <dt className="">lessons</dt>
-                            <dd>12 lessons</dd>
-                        </div>
-
-                        <div>
-                            <dt className="">Ducation</dt>
-                            <dd>5h</dd>
-                        </div>
-
-                    </dl>
-
-                
-                </Link>
-              </div>
-
-            </div>
+            <CoursesCatalogClinet courses={courses}
+              category={category}
+            />
 
         </div>
       </div>

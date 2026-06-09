@@ -24,9 +24,9 @@ export default function RootLayout({
         <header className=" site-header">
           <div className="container site-header-inner">
             <nav className="site-nav">
-              <a href="/">Home</a>
-              <a href="/courses">Courses</a>
-              <a href="/instructors">Instructors</a>
+              <a href="/" className="site-nav-link">Home</a>
+              <a href="/courses" className="site-nav-link">Courses</a>
+              <a href="/instructors" className="site-nav-link">Instructors</a>
             </nav>
           </div>
 
