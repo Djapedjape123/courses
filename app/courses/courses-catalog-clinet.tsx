@@ -1,28 +1,102 @@
 "use client"
 
-import { instructors,Course } from "@/lib/data"
+import { instructors, Course } from "@/lib/data"
 import Link from "next/link"
+import { useMemo, useState } from "react"
 
- function instructorNameForCourse(course: Course): string {
+function instructorNameForCourse(course: Course): string {
     return (
         instructors.find((i) => i.slug === course.instructorSlug)?.name || "Unknown Instructor"
     )
-   
- 
- }
+
+
+}
 
 export default function CoursesCatalogClinet({
     courses,
-    category
+    category,
+    levels
 }: {
     courses: Course[],
-    category: String[]
+    category: string[],
+    levels: string[]
 }) {
+
+    const [level, setLevel] = useState<string>('all')
+    const [categor, setCategory] = useState<string>('all')
+    const [query, setQuery] = useState<string>('');
+
+    const filterd = useMemo(() => {
+        const q = query.trim().toLowerCase()
+
+        return courses.filter((course) => {
+            const matcheQueru = q === "" || course.title.toLowerCase().includes(q)
+            const matcheCate = categor === "all" || course.category === categor
+            const machLvl = level === "all" || course.level === level
+
+            return matcheQueru && matcheCate && machLvl
+
+        })
+    }, [query, courses, categor, level])
+
+    const reset = () => {
+        setQuery("")
+        setLevel("all")
+        setLevel("all")
+    };
+
+
+    const isFilterd = query !== "" || categor !== "all" || level !== "all"
+
     return (
         <div className="stack-md">
+
+            <div className="panel">
+                <div className="grid-filters">
+                    <div className="field">
+                        <label htmlFor="searc" className="field-label">Searc courses by title</label>
+                        <input id="searc" placeholder="NextJS" type="text" className="input"
+                            onChange={(e) => setQuery(e.target.value)}
+                            value={query} />
+                    </div>
+
+                    <div className="field">
+                        <label htmlFor="cat" className="field-label">Courses Category</label>
+                        <select name="" id="cat"
+                            className="input"
+                            onChange={(e) => setCategory(e.target.value)}
+                            value={categor}
+                        >
+                            <option value="all">All</option>
+                            {category.map((c) => (
+                                <option key={c} value={c}>{c}</option>
+                            ))}
+                        </select>
+                    </div>
+
+
+                    <div className="field">
+                        <label htmlFor="lvl" className="field-label">Level</label>
+                        <select name="" id="lvl"
+                            className="input"
+                            onChange={(e) => setLevel(e.target.value)}
+                        >
+                            <option value="all">All</option>
+                            {levels.map((c) => (
+                                <option key={c} value={c}>{c}</option>
+                            ))}
+                        </select>
+                    </div>
+
+                </div>
+                <div className="filter-bar">
+                    {isFilterd ? (<button onClick={reset} className="btn-link">Reset</button>) : null}
+
+                </div>
+            </div>
             <div className="grid-cards">
 
-                {courses.map((course) => (
+                {filterd.map((course) => (
                     <Link
                         href={`/courses/${course.slug}`}
                         key={course.id}

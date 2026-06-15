@@ -1,13 +1,15 @@
  
 import Link from "next/link";
 import CoursesCatalogClinet from "./courses-catalog-clinet";
-import { getAllCourses, getCourseCategories } from "@/lib/data";
+import { getAllCourses, getCourseCategories, getCourseLevels } from "@/lib/data";
 
 export default function Course() {
 
     const courses = getAllCourses();
 
     const category = getCourseCategories();
+
+    const levels = getCourseLevels()
 
 
 
@@ -23,6 +25,7 @@ export default function Course() {
 
             <CoursesCatalogClinet courses={courses}
               category={category}
+              levels={levels}
             />
 
         </div>
