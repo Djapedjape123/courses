@@ -84,6 +84,7 @@ export default async function page({
                                 <Link href={`instructors/${instructor.slug}`}
                                   className="link-bred is-block"
                                 >View profil</Link>
+                                
 
                             </div>
                         ) : null}
