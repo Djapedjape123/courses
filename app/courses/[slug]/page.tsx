@@ -81,10 +81,10 @@ export default async function page({
                                 <p className="sidebar-label">Instructor</p>
                                 <p>{instructor.name}</p>
 
-                                <Link href={`instructors/${instructor.slug}`}
+                                <Link href={`/instructors/${instructor.slug}`}
                                   className="link-bred is-block"
                                 >View profil</Link>
-                                
+
 
                             </div>
                         ) : null}
