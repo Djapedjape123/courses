@@ -25,8 +25,8 @@ export default function RootLayout({
           <div className="container site-header-inner">
             <form action="/search" method="get" className="header-search">
 
-            <input type="search" placeholder="nextJs/react" name="q" className="header-search-q" />
-
+            <input type="search" placeholder="nextJs/react" name="q" className="input header-search-input" />
+             <button className="btn btn-primary btn-sm">Search</button>
             </form>
             <nav className="site-nav">
               <a href="/" className="site-nav-link">Home</a>

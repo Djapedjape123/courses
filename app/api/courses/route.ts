@@ -1,5 +1,4 @@
 import { getAllCourses } from "@/lib/data";
-import { count } from "console";
 import { NextResponse } from "next/server";
 
 export async function GET(request: Request) {
@@ -12,7 +11,7 @@ export async function GET(request: Request) {
     if(q){
         const needle = q.toLowerCase();
 
-        courses.filter(
+        courses = courses.filter(
             (c) => c.title.toLowerCase().includes(needle)
         );
 
