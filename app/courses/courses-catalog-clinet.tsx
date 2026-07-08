@@ -80,6 +80,7 @@ export default function CoursesCatalogClinet({
                         <select name="" id="lvl"
                             className="input"
                             onChange={(e) => setLevel(e.target.value)}
+                            value={level}
                         >
                             <option value="all">All</option>
                             {levels.map((c) => (
