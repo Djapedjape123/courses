@@ -42,7 +42,7 @@ export default function CoursesCatalogClinet({
     const reset = () => {
         setQuery("")
         setLevel("all")
-        setLevel("all")
+        setCategory("all")
     };
 
 
