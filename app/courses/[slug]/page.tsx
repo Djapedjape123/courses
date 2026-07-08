@@ -2,6 +2,8 @@ import { getCourseBySlug, getInstructorBySlug } from "@/lib/data"
 import Link from "next/link";
 import { notFound } from "next/navigation"
 
+
+
 export default async function page({
     params
 }: {
@@ -12,11 +14,14 @@ export default async function page({
     const course = getCourseBySlug(slug);
 
     if (!course) notFound();
+    
 
     const instructor = getInstructorBySlug(course.instructorSlug)
+    
 
 
     return (
+        
         <section className="pad-section">
             <div className="container">
                 <nav className="back-nav">
