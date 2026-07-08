@@ -7,14 +7,14 @@ function initials(name: string): string{
             .map((part) => part[0])
             .filter(Boolean)
             .slice(0 , 2)
-            .join()
+            .join("")
             .toUpperCase()
 }
 
 export default function Instructors() {
+
+  
   const istructorsList = getAllInstructors()
-
-
 
   return (
     <section className="pad-section">

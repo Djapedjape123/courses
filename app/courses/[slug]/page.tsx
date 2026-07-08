@@ -1,7 +1,22 @@
 import { getCourseBySlug, getInstructorBySlug } from "@/lib/data"
 import Link from "next/link";
 import { notFound } from "next/navigation"
+import type { Metadata } from "next"
 
+export async function generateMetadata({
+    params
+}: {
+    params: Promise<{ slug: string }>
+}): Promise<Metadata> {
+    const { slug } = await params
+    const course = getCourseBySlug(slug)
+    if (!course) return {}
+
+    return {
+        title: `${course.title} | Naziv sajta`,
+        description: course.shortDescription,
+    }
+}
 
 
 export default async function page({

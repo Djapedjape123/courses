@@ -8,7 +8,7 @@ function initials(name: string): string {
         .map((part) => part[0])
         .filter(Boolean)
         .slice(0, 2)
-        .join()
+        .join("")
         .toUpperCase()
 }
 
